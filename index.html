@@ -105,6 +105,11 @@
       }
 
       if ((ball.x < 0 || ball.x > canvas.width) && !ball.resetting) {
+        if (ball.x < 0) {
+          rightPlayerScore++;
+        } else {
+          leftPlayerScore++;
+        }
         ball.resetting = true;
 
         setTimeout(() => {
@@ -114,6 +119,8 @@
         }, 400);
       }
 
+      drawScores(); // Update scores on canvas
+
       if (collides(ball, leftPaddle)) {
         ball.dx *= -1;
         ball.x = leftPaddle.x + leftPaddle.width;
@@ -121,8 +128,6 @@
         ball.dx *= -1;
         ball.x = rightPaddle.x - ball.width;
       }
-
-      drawScores();
 
       context.fillRect(ball.x, ball.y, ball.width, ball.height);
       context.fillStyle = 'lightgrey';
