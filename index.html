@@ -22,9 +22,7 @@
 <canvas width="750" height="585" id="game"></canvas>
 <script>
 
-const score = {
-  value: 0
-}
+const score = 0;
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 const grid = 15;
@@ -124,7 +122,7 @@ function loop() {
   // reset ball if it goes past paddle (but only if we haven't already done so)
   if ( (ball.x < 0 || ball.x > canvas.width) && !ball.resetting) {
     ball.resetting = true;
-    score.value++;
+    score++;
     document.getElementById("p1").innerhtml(score);
 
     // give some time for the player to recover before launching the ball again
